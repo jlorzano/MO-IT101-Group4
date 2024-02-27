@@ -41,24 +41,31 @@ public class MotorPH2 {
         
         BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\gamer\\OneDrive\\Documents\\Mmdc\\Copy of MotorPH Employee Data.csv"));
         
+        boolean found = false;
         while ((str = br.readLine()) != null) {
-            if(str.contains(search)) {
-                    String[] values = str.split(",");
-                    System.out.println("----------------EMPLOYEE INFO---------------");
-                    System.out.println("Employee Number: " + values[0]);
-                    System.out.println("Employee Name: " + values[2] + " "+ values[1]);
-                    System.out.println("DOB: " +  values[3]);
-                    System.out.println("----------------PAYOUT INFO-----------------");
-                    System.out.println("Hours Worked (EOM): " + values[23]);
-                    System.out.println("Gross Earnings: " + values[24]);
-                    System.out.println("Total Dedutions: " + values[29]);
-                    System.out.println("Net Earnings: " + values[30]);
-                    System.out.println("---------------------------------------------");
-                    System.out.println(" ");
-                    System.out.println(" ");
-                    System.out.println("Thank you for using the MotorPH Payroll System!");
-                    break;
-                }
-        }
+            if (str.contains(search)) { 
+                String[] values = str.split(",");
+                System.out.println("----------------EMPLOYEE INFO---------------");
+                System.out.println("Employee Number: " + values[0]);
+                System.out.println("Employee Name: " + values[2] + " "+ values[1]);
+                System.out.println("DOB: " +  values[3]);
+                System.out.println("----------------PAYOUT INFO-----------------");
+                System.out.println("Hours Worked (EOM): " + values[23]);
+                System.out.println("Gross Earnings: " + values[24]);
+                System.out.println("Total Dedutions: " + values[29]);
+                System.out.println("Net Earnings: " + values[30]);
+                System.out.println("---------------------------------------------");
+                System.out.println(" ");
+                System.out.println(" ");
+                System.out.println("Thank you for using the MotorPH Payroll System!");
+                found = true;
+                break;   
+            }
+            if(!found) {
+                System.out.println("Invalid Employee ID...");
+                break;
+            }
+            
+        }        
     }
 }
