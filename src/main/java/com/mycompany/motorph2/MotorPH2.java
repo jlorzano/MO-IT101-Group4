@@ -61,11 +61,10 @@ public class MotorPH2 {
                 found = true;
                 break;   
             }
-            if(!found) {
+        } 
+        if(!found) {
                 System.out.println("Invalid Employee ID...");
                 break;
-            }
-            
-        }        
+        }
     }
 }
