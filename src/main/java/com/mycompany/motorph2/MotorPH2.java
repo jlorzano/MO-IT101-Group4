@@ -24,14 +24,20 @@ public class MotorPH2 {
         Greetings gr = new Greet2() {};
         gr.greet1();
         Thread.sleep(3000);
-        gr.greets();                                                            
+        gr.greets();
+        int maxAttempts = 3;
+        int attempts = 0;
         
         //this code is used for the userID login once the user enters their userID the Encapsulation below captures the data entered and uses the buffered reader to search for the
         //employee's data
+        boolean cont = true;
+        while (cont) {
         Scanner scan = new Scanner(System.in);
         String search,str;
         System.out.print("Enter Employee ID:"+" ");
         search = scan.nextLine();
+        attempts++;
+        if (attempts==maxAttempts) { System.out.println("You have reached the max attempt!"); break; }
         
         //Encapsulation was performed using the getter and setter methods below
         Eid myEid = new Eid();
@@ -39,7 +45,7 @@ public class MotorPH2 {
         System.out.print("Searching Info for Employee.... "); System.out.println(myEid.getId());
         Thread.sleep(5000);
         
-        BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\gamer\\OneDrive\\Documents\\Mmdc\\Copy of MotorPH Employee Data.csv"));
+        BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\gamer\\OneDrive\\Documents\\Mmdc\\MotorPH Employee Datav4.txt"));
         
         boolean found = false;
         while ((str = br.readLine()) != null) {
@@ -64,6 +70,8 @@ public class MotorPH2 {
         } 
         if(!found) {
                 System.out.println("Invalid Employee ID...");
+        }
+        cont = (!found);
         }
     }
 }
